@@ -3,7 +3,6 @@ import Header from './Header'
 import Validate from '../utils/Validate'
 import { createUserWithEmailAndPassword,signInWithEmailAndPassword} from "firebase/auth";
 import { auth } from '../utils/firebase';
-import { useNavigate } from 'react-router-dom';
 import { updateProfile } from "firebase/auth";
 import { useDispatch } from 'react-redux';
 import { adduser } from '../utils/Userslice';
@@ -11,7 +10,7 @@ import { adduser } from '../utils/Userslice';
 const Login = () => {
   const css='p-4 border-gray-600 border-[1px] rounded-md bg-black text-white'
 
-  const [issignup,setissignup]=useState(false);
+ const [issignup,setissignup]=useState(false);
   const [rec,setrec]=useState(null);         //what we received from validate func
 
   const email=useRef(null);             //keep track of text typed on input(email field) without re renders
@@ -21,7 +20,6 @@ const Login = () => {
 
 const [error,seterror]=useState(null);  //gives error if we sign in with a non existing account...
 
-const navigate=useNavigate();
 
    const toggle=()=>{
      setissignup(!issignup);
@@ -51,8 +49,7 @@ updateProfile(auth.currentUser, {          //lets first get the display name the
 
 }).then(() => {
       const {uid,email,displayName}=auth.currentUser;
-    dispatch(adduser({uid:uid,email:email,displayName:displayName})); 
-    navigate('/Browse');   
+    dispatch(adduser({uid:uid,email:email,displayName:displayName}));  
 }).catch((error) => {
   // An error occurred
   // ...
@@ -63,7 +60,6 @@ updateProfile(auth.currentUser, {          //lets first get the display name the
     const errorCode = error.code;
     const errorMessage = error.message;
      seterror(errorCode + ' ' + errorMessage);
-     navigate('/');
   });
     }
 
@@ -73,15 +69,12 @@ updateProfile(auth.currentUser, {          //lets first get the display name the
 
       signInWithEmailAndPassword(auth, email.current.value, password.current.value)
   .then((userCredential) => {
-
-    navigate('/Browse');
-  
   })
+  
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
        seterror(errorCode + ' ' + errorMessage);
-       navigate('/');
   });
     }
 
@@ -90,8 +83,8 @@ updateProfile(auth.currentUser, {          //lets first get the display name the
   return (
     <div>
 
-    <Header/>
-    
+     <Header/>
+     
     <div>
     <img src="https://assets.nflxext.com/ffe/siteui/vlv3/dc1cf82d-97c9-409f-b7c8-6ac1718946d6/14a8fe85-b6f4-4c06-8eaf-eccf3276d557/IN-en-20230911-popsignuptwoweeks-perspective_alpha_website_medium.jpg" alt='logo'/>
     </div>

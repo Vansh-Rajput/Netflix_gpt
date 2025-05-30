@@ -7,3 +7,14 @@
 # some issues with authentication and fix
 - when we are in login page and write /Browse on top of url, it takes us directly inside browse even without login itself.
 - while you are in browse and you change url to /login by yourself on top, we must still be present on browse only no matter what, not just migrate to login.
+
+
+- FIX---> 
+- put navigates inside onauthstatechanged, beware that our navigate should be inside router provider, hence we placed our useEffect inside header as it is a comp present always inside login,browse or it is like children to them.....
+
+- So we are using Redux to store user info. If there’s no user in Redux yet (because the app just loaded), then Firebase checks the real auth state. If it finds no user, it runs the else block, and we’re sent back to '/'.
+
+- onAuthStateChanged is a real-time listener that always watches your app's login state.It stays active as long as your app is running, and reacts immediately when the auth state changes — just like an event listener.If you're logged in, it knows.If you're logged out, it knows.If anything changes, it fires the callback again with the new user state.
+
+- now no need to use navigate command anywhere in our app, except header
+
