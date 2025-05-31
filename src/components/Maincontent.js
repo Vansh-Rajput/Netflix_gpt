@@ -15,7 +15,7 @@ const {overview,original_title,id}=moviestore[1];
 
     <div>
         <Videotitle title={original_title} about={overview}/>
-        <Videobackground id={id}/>
+        <Videobackground id={id} overview={overview} original_title={original_title}/>
     </div>
   )
 }

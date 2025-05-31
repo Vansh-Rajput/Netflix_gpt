@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Usetrailer } from "../utils/usetrailer";
 
+
 const Videobackground = ({id}) => {
 
    const [data,setdata]=useState(null);
@@ -12,6 +13,7 @@ const link= data?.results?.find((elem)=>elem?.type==='Trailer');
 
   return (
     <div>
+
   <iframe
   width="100%"
   height="800"
@@ -39,11 +41,3 @@ export default Videobackground
 
 
 
-
-
-
-
-//https://www.youtube.com/embed/KDu06WazAOE?si=3zsj8008fZm00hom
-
-
-//https://www.youtube.com/embed/-Sk-RriOtpU?si=OJ4DjlG51JNcWTga

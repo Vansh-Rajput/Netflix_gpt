@@ -54,7 +54,7 @@ signOut(auth).then(() => {
 
   
   return (
-    <div className='absolute px-10 py-2  bg-gradient-to-b from-black w-full flex justify-between z-40' >
+    <div className='absolute px-10 py-2  bg-gradient-to-b from-black w-full flex justify-between z-10' >
     <img className='w-44' src={Netflixlogo} alt="netflix"/>
 
     {user

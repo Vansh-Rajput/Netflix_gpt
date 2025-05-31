@@ -8,10 +8,5 @@ export const Apioptions = {
   }
 };
 
-export const Options = {
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YTU2NDU1MmU1OWU1OTllZjQ2OTgxNGZjMTM1MzhhNCIsIm5iZiI6MTc0ODQ1MzgwMi4yNTYsInN1YiI6IjY4Mzc0OWFhODJmNmE4YTcxMTQxNTAyNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.WioHHO4W4hB2134un-WS9T1K9hHS_svbUcNXdi5xyQg'
-  }
-};
+
+export const Posterurl='https://image.tmdb.org/t/p/w500';

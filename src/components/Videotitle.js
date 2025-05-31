@@ -2,10 +2,10 @@
 
 const Videotitle = ({title,about}) => {
 
-  const bstyle=" hover:bg-gray-300  font-bold py-2 px-5 rounded  bg-white";
+  const bstyle=" hover:bg-gray-300  font-bold py-2 px-5 rounded  bg-white ";
 
   return (
-    <div className='px-11 py-96 flex flex-col gap-8 absolute  bg-gradient-to-r from-black '>
+    <div className='my-56 mx-8 flex flex-col gap-8 absolute '>
       <h1 className="text-6xl text-white">{title}</h1>
 
 

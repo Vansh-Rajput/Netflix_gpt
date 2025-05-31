@@ -1,16 +1,17 @@
+
 import { useDispatch } from "react-redux";
 import { Apioptions} from "./constants";
-import { addnowPlayingMovies } from "./Movieslice";
+import { addtoprated } from "./Movieslice";
 import { useEffect } from "react";
 
 
-export const useApimovie=()=>{
+export const useToprated=()=>{
      const dispatch=useDispatch();
      
         const Apicall=async()=>{
-          const prom=await fetch('https://api.themoviedb.org/3/movie/now_playing?page=1',Apioptions);
+          const prom=await fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1',Apioptions);
           const data=await prom.json();
-          dispatch(addnowPlayingMovies(data?.results));
+          dispatch(addtoprated(data?.results));
           console.log(data);
         } 
          
