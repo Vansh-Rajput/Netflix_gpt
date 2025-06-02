@@ -9,7 +9,7 @@ import Appstore from './utils/Appstore'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
       <Provider store={Appstore}>
-      <App/>
+   <App/>
       </Provider>
     
 );

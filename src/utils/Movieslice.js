@@ -10,7 +10,7 @@ const Movieslice=createSlice({
 
     reducers:{
        addnowPlayingMovies:(state,action)=>{
-          state.nowPlayingMovies=action.payload;
+          state.nowPlayingMovies=action?.payload;
        },
         addtoprated:(state,action)=>{
           state.toprated=action.payload;

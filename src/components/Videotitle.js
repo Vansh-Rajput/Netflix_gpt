@@ -6,7 +6,7 @@ const Videotitle = ({title,about}) => {
 
   return (
     <div className='my-56 mx-8 flex flex-col gap-8 absolute '>
-      <h1 className="text-6xl text-white">{title}</h1>
+      <h1 className="text-5xl text-white ">{title}</h1>
 
 
 
@@ -16,7 +16,7 @@ const Videotitle = ({title,about}) => {
         <button className={bstyle} style={ {backgroundColor: 'grey',color:'white'}}>ⓘ More Info</button>
       </div>
 
-      <h1 className="text-gray-200 text-xl w-[700px]">{about}</h1>
+      <h1 className="text-gray-200 text-xl w-1/2">{about}</h1>
     </div>
   )
 }

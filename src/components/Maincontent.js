@@ -1,14 +1,16 @@
 import Videobackground from './Videobackground'
 import Videotitle from './Videotitle'
 import { useSelector } from 'react-redux'
+import Loader from "../utils/Loader";
 
 const Maincontent = () => {
 
-const moviestore= useSelector((store)=>store.movies?.nowPlayingMovies);
+const moviestore= useSelector((store)=>store?.movies?.nowPlayingMovies);
 
-if(!moviestore)return;
+if(!moviestore) return <Loader/>;
 
-const {overview,original_title,id}=moviestore[1];
+
+const {overview,original_title,id}=moviestore[4];
 
 
   return (
@@ -18,6 +20,8 @@ const {overview,original_title,id}=moviestore[1];
         <Videobackground id={id} overview={overview} original_title={original_title}/>
     </div>
   )
+
+  
 }
 
 export default Maincontent

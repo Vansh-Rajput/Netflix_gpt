@@ -8,7 +8,7 @@ const Movielist = ({title,data}) => {
     <div className='p-8'>
         <h1 className='text-white font-semibold text-3xl'>{title}</h1>
     <div className=' flex overflow-auto'>
-    <div className='flex gap-8'>
+    <div className='flex gap-3'>
          {
             data?.map((val)=>{
             return (

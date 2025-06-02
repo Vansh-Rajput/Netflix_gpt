@@ -8,8 +8,9 @@ const Videobackground = ({id}) => {
    
 Usetrailer(setdata,id);
 
-if(data){
+if(data!==null){
 const link= data?.results?.find((elem)=>elem?.type==='Trailer');
+console.log(link)
 
   return (
     <div>
@@ -29,6 +30,7 @@ const link= data?.results?.find((elem)=>elem?.type==='Trailer');
   referrerPolicy="strict-origin-when-cross-origin"
   allowFullScreen
   style={{ pointerEvents: 'none' }} // Optional: prevent clicks on iframe
+  className="bg-cover bg-center min-h-screen"
 ></iframe>
     </div>
   )

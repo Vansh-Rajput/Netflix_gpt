@@ -1,5 +1,5 @@
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {onAuthStateChanged} from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
@@ -8,11 +8,18 @@ import {useNavigate } from "react-router-dom";
 import { Netflixlogo } from "../utils/constants";
 import { useSelector } from "react-redux";
 import {signOut } from "firebase/auth";
+import { togglegpt } from "../utils/Gptslice";
+
+
 
 const Header = () => {
-
+ 
+  
   const dispatch=useDispatch();
+  const select=useSelector((store)=>store?.gpt?.showsearch);
   const navigate=useNavigate();
+  const [Aibutton,setAibutton]=useState('✦ Ai Search');
+
 
       useEffect(()=>{
         
@@ -49,7 +56,12 @@ signOut(auth).then(() => {
 }).catch((error) => {
   // An error happened.
 });
+  }
 
+
+  const handlegpt=()=>{
+     dispatch(togglegpt());
+     (select===false)?setAibutton('Home'):setAibutton('✦ Ai Search');
   }
 
   
@@ -60,6 +72,15 @@ signOut(auth).then(() => {
     {user
       &&
      <div className='flex gap-6 items-center'> 
+
+  
+<button onClick={handlegpt}  className="flex items-center gap-2 px-4 py-2 font-bold text-white rounded-full cursor-pointer shadow-lg bg-[length:300%] bg-[linear-gradient(15deg,purple,mediumvioletred,crimson,orangered,orange,orangered,crimson,purple)] bg-no-repeat bg-[position:left_center] transition-all duration-300 hover:bg-[length:320%] hover:bg-[position:right_center] [text-shadow:2px_2px_3px_magenta]">
+  <span>{Aibutton}</span>
+</button>
+
+
+
+
     <p className="text-white" >{user?.displayName}</p>
     <img src='https://i.pinimg.com/564x/1b/a2/e6/1ba2e6d1d4874546c70c91f1024e17fb.jpg' className='w-10 h-10 rounded-sm' alt='userlogo'/>
     <p onClick={handler} className="cursor-pointer text-white">Sign Out</p>

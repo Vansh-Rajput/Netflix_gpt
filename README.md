@@ -18,3 +18,10 @@
 
 - now no need to use navigate command anywhere in our app, except header
 
+
+
+# Promise in Gptsearchbar -
+
+- when we are make consecutive api calls for api using the map, we are actually calling an async function which takes some time to resolve, we will not get the results directly but array of promises on iterating over data got by Ai_search.js.
+
+- for that we will use Promise.all() api function with await, hence now we will get the final results once all the promises are resolved
