@@ -10,7 +10,7 @@ const moviestore= useSelector((store)=>store?.movies?.nowPlayingMovies);
 if(!moviestore) return <Loader/>;
 
 
-const {overview,original_title,id}=moviestore[4];
+const {overview,original_title,id}=moviestore[1];
 
 
   return (

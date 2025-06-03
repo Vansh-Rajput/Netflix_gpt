@@ -9,7 +9,7 @@ const Gptsearchsugg = () => {
 
   if(select){
   return (
-    <div className="flex gap-3 p-5 flex-wrap w-[90%] justify-center">
+    <div className="flex gap-3 -mt-12 flex-wrap w-[90%] justify-center">
 
 {
   

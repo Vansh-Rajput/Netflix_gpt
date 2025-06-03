@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Usetrailer } from "../utils/usetrailer";
+import Moviecard from "./Moviecard";
+import { Posterurl } from "../utils/constants";
 
 
 const Videobackground = ({id}) => {
@@ -15,8 +17,12 @@ console.log(link)
   return (
     <div>
 
+<div className="w-screen md:hidden">
+<img src={Posterurl+'/yFHHfHcUgGAxziP1C3lLt0q2T4s.jpg'}/>
+</div>
+
   <iframe
-  width="100%"
+  width='100%'
   height="800"
   src={
     'https://www.youtube.com/embed/' +
@@ -30,7 +36,7 @@ console.log(link)
   referrerPolicy="strict-origin-when-cross-origin"
   allowFullScreen
   style={{ pointerEvents: 'none' }} // Optional: prevent clicks on iframe
-  className="bg-cover bg-center min-h-screen"
+  className="bg-cover  min-h-screen md:inline-block hidden"
 ></iframe>
     </div>
   )

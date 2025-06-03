@@ -66,24 +66,24 @@ signOut(auth).then(() => {
 
   
   return (
-    <div className='absolute px-10 py-2  bg-gradient-to-b from-black w-full flex justify-between z-10' >
-    <img className='w-44' src={Netflixlogo} alt="netflix"/>
+    <div className='absolute p-3  bg-gradient-to-b from-black w-full flex justify-between z-10' >
+    <img className='md:w-44 w-20' src={Netflixlogo} alt="netflix"/>
 
     {user
       &&
-     <div className='flex gap-6 items-center'> 
+     <div className='flex gap-5 items-center'> 
 
   
-<button onClick={handlegpt}  className="flex items-center gap-2 px-4 py-2 font-bold text-white rounded-full cursor-pointer shadow-lg bg-[length:300%] bg-[linear-gradient(15deg,purple,mediumvioletred,crimson,orangered,orange,orangered,crimson,purple)] bg-no-repeat bg-[position:left_center] transition-all duration-300 hover:bg-[length:320%] hover:bg-[position:right_center] [text-shadow:2px_2px_3px_magenta]">
+<button onClick={handlegpt}  className="text-[10px] md:text-sm px-4 py-2 font-bold text-white rounded-full cursor-pointer shadow-lg bg-[length:300%] bg-[linear-gradient(15deg,purple,mediumvioletred,crimson,orangered,orange,orangered,crimson,purple)] bg-no-repeat bg-[position:left_center] transition-all duration-300 hover:bg-[length:320%] hover:bg-[position:right_center] [text-shadow:2px_2px_3px_magenta]">
   <span>{Aibutton}</span>
 </button>
 
 
 
 
-    <p className="text-white" >{user?.displayName}</p>
-    <img src='https://i.pinimg.com/564x/1b/a2/e6/1ba2e6d1d4874546c70c91f1024e17fb.jpg' className='w-10 h-10 rounded-sm' alt='userlogo'/>
-    <p onClick={handler} className="cursor-pointer text-white">Sign Out</p>
+    <p className="text-white text-sm" >{user?.displayName}</p>
+    <img src='https://i.pinimg.com/564x/1b/a2/e6/1ba2e6d1d4874546c70c91f1024e17fb.jpg' className='w-5 h-5 md:w-10 md:h-10 rounded-sm' alt='userlogo'/>
+    <p onClick={handler} className="cursor-pointer text-white text-sm">Sign Out</p>
     </div>
     }
 

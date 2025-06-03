@@ -9,7 +9,7 @@ import { adduser } from '../utils/Userslice';
 import { Netflixback } from '../utils/constants';
 
 const Login = () => {
-  const css='p-4 border-gray-600 border-[1px] rounded-md bg-black text-white'
+  const css='p-1 md:p-3 border-gray-600 border-[1px] rounded-md bg-black text-white'
 
 
  const [issignup,setissignup]=useState(false);
@@ -87,14 +87,14 @@ updateProfile(auth.currentUser, {          //lets first get the display name the
 
      <Header/>
      
-    <div>
-    <img src={Netflixback} alt='logo' className='bg-cover bg-center min-h-screen opacity-60 bg-black'/>
-    </div>
+    <div className='flex justify-center items-center'>
+    <img src={Netflixback} alt='logo' className=' object-cover h-screen'/>
+
 
 
         {/* e.prevent prevents form from submit, else our invalid email msg wont come */}
 
-    <form onSubmit={(e)=>e.preventDefault()} className='absolute bg-black flex flex-col w-[500px] p-10 gap-7 left-1/3 top-[100px] bg-opacity-80'>
+    <form onSubmit={(e)=>e.preventDefault()} className=' bg-opacity-85 absolute p-10 gap-7  bg-black flex flex-col  md:w-[500px] '>
        
     <h1 className='font-xl text-white text-4xl font-bold'>{issignup===true?"Sign In":"Sign Up"}</h1>
     {!issignup && <input type='text' placeholder='Full Name' className={css} ref={name}/>}
@@ -109,6 +109,7 @@ updateProfile(auth.currentUser, {          //lets first get the display name the
     <p onClick={toggle} className='text-white cursor-pointer hover:text-gray-300'>{issignup===true?"New to Netflix? Sign up Now":"Already a user? Sign In"}</p>
     
     </form>
+  </div>
 
     </div>
   )

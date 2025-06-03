@@ -6,7 +6,7 @@ const Secondcontent = () => {
   const select=useSelector((store)=>store?.movies);
 
   return (
-    <div className="-mt-44">
+    <div className=" md:-mt-44">
      
        <Movielist title={'Top Rated'} data={select?.toprated}/>
          <Movielist title={'Now Playing'} data={select?.nowPlayingMovies}/>
