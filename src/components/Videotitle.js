@@ -6,7 +6,7 @@ const Videotitle = ({title,about}) => {
 
   return (
   
-    <div className='py-[550px] md:py-56 md:px-8 flex flex-col gap-8 absolute w-screen'>
+    <div className='my-[550px] md:my-56 md:px-8 flex flex-col gap-8 absolute w-screen'>
       <h1 className="hidden md:inline-block md:text-5xl text-white ">{title}</h1>
 
 
