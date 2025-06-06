@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Usetrailer } from "../utils/usetrailer";
-import Moviecard from "./Moviecard";
 import { Posterurl } from "../utils/constants";
 
 
@@ -11,8 +10,8 @@ const Videobackground = ({id}) => {
 Usetrailer(setdata,id);
 
 if(data!==null){
-const link= data?.results?.find((elem)=>elem?.type==='Trailer');
-console.log(link)
+const link= data?.results?.find((elem)=>elem?.type==='Clip');
+
 
   return (
     <div>

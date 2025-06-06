@@ -14,7 +14,7 @@ const Gptsearchbar = ({load,setload}) => {
   const handlegpt=async()=>{
  
     setload(1);
-    console.log(searchdata.current.value);
+  
 
 const query = `
 You are a professional movie recommendation engine.
@@ -61,7 +61,7 @@ B. Mention a specific movie (e.g., "John Wick", "Inception").
 const promarr=list.map((name)=>Ai_search(name)); 
 const result=await Promise.all(promarr);
 
-console.log(result);
+
 
 dispatch(addsearchresult(result));
 
@@ -74,18 +74,29 @@ setload(null);
     <div>
    
 <form className="md:w-[50%] mx-auto w-[80%] py-36" onSubmit={(e)=>e.preventDefault()}>   
-    <div className="relative">
-
-        <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-            <svg className="w-6 h-4 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-            </svg>
-        </div>
-        
-      <input className="h-14 block w-full p-4 ps-10  border border-gray-300 rounded-lg  focus:ring-red-700 focus:border-red-700 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 text-white " placeholder="Search Movies ...." required ref={searchdata} />
-      <button  className=" text-white absolute end-2.5 bottom-2  focus:ring-2  rounded-lg  px-4 py-2 dark:bg-red-700 hover:bg-red-500" onClick={handlegpt}>Search</button>
+  <div className="relative">
+    
+    <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+      <svg className="w-6 h-4 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+      </svg>
     </div>
 
+    <input
+      className="h-14 block w-full p-4 ps-10 border border-gray-600 rounded-lg focus:ring-red-700 focus:border-red-700 bg-gray-800 placeholder-gray-400 text-white"
+      placeholder="Search Movies ...."
+      required
+      ref={searchdata}
+    />
+
+    <button
+      className="text-white absolute end-2.5 bottom-2 focus:ring-2 rounded-lg px-4 py-2 bg-red-700 hover:bg-red-500"
+      onClick={handlegpt}
+    >
+      Search
+    </button>
+    
+  </div>
 </form>
 
     </div>

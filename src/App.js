@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider} from "react-router-dom";
 import Login from "./components/Login";
 import Browse from "./components/Browse";
-
+import Watch from "./components/Watch";
 
 
 function App() {
@@ -16,6 +16,10 @@ function App() {
    {
    path:'/Browse',
      element:<Browse/>
+   },
+   {
+    path:'/watch/:watchid',
+    element:<Watch/>
    }
   ]);
 

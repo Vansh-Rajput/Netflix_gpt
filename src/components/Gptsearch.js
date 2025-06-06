@@ -2,6 +2,7 @@ import { useState } from "react";
 import Gptsearchbar from "./Gptsearchbar";
 import Gptsearchsugg from "./Gptsearchsugg";
 import Loader from "../utils/Loader";
+import { Netflixback, Posterurl } from "../utils/constants";
 
 
 const Gptsearch = () => {
@@ -10,6 +11,7 @@ const Gptsearch = () => {
 
   return (
     <div>
+  
 
          <Gptsearchbar load={load} setload={setload}/>
    

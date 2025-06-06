@@ -9,8 +9,9 @@ import { adduser } from '../utils/Userslice';
 import { Netflixback } from '../utils/constants';
 
 const Login = () => {
-  const css='p-1 md:p-3 border-gray-600 border-[1px] rounded-md bg-black text-white'
-
+  const css='p-1 md:p-3 border-gray-600 border-[1px] rounded-md bg-black text-white w-full'
+  const [showpass,setshowpass]=useState('password');
+  const [field,setfield]=useState('show');
 
  const [issignup,setissignup]=useState(false);
   const [rec,setrec]=useState(null);         //what we received from validate func
@@ -25,6 +26,17 @@ const [error,seterror]=useState(null);  //gives error if we sign in with a non e
 
    const toggle=()=>{
      setissignup(!issignup);
+   }
+
+   const handleshow=()=>{
+    if(showpass==='password'){
+ setshowpass('text')
+    setfield('hide')
+    }
+  else{
+     setshowpass('password')
+    setfield('show');
+  }
    }
 
    const handle=()=>{
@@ -100,10 +112,18 @@ updateProfile(auth.currentUser, {          //lets first get the display name the
     {!issignup && <input type='text' placeholder='Full Name' className={css} ref={name}/>}
 
      <input type='text' placeholder='Email' className={css} ref={email}/>
-      <input type='password' placeholder='Password' className={css} ref={password}/>
+
+
+     <div className='w-full flex justify-end items-center'>
+      <input type={showpass} placeholder='Password' className={css} ref={password}/>
+      <div className='text-white absolute mr-3 font-mono text-sm cursor-pointer' onClick={handleshow}>{field}</div>
+          </div> 
+
+      
    <p className='text-red-600 font-semibold'>{error || rec}</p>
 
       <button className='bg-red-600 p-2 text-white cursor-pointer rounded-md hover:bg-red-500' onClick={handle} >
+
       {issignup===false?"Sign up":"Sign In"}</button>
 
     <p onClick={toggle} className='text-white cursor-pointer hover:text-gray-300'>{issignup===true?"New to Netflix? Sign up Now":"Already a user? Sign In"}</p>

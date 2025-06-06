@@ -12,7 +12,7 @@ const Movielist = ({title,data}) => {
          {
             data?.map((val)=>{
             return (
-               <Moviecard poster={val?.poster_path} key={val.id}/>
+               <Moviecard poster={val?.poster_path} id={val?.id} key={val.id}/>
                )
             })
          }
