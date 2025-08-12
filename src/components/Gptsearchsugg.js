@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux"
 import Moviecard from "./Moviecard";
-import { Link } from "react-router-dom";
+
 
 const Gptsearchsugg = () => {
 
@@ -21,7 +21,7 @@ const Gptsearchsugg = () => {
 
   })
 }
-      
+     
     </div>
   )
 

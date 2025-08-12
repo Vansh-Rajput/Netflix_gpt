@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const Videotitle = ({title,about}) => {
@@ -12,8 +13,7 @@ const Videotitle = ({title,about}) => {
 
 
         <div className="flex justify-center gap-6 md:justify-start">
-        <span className=" md:hidden text-white">＋ My List </span>
-        <button className={bstyle}>▶︎ PLAY </button>
+       <Link to={"/watch/movie/575265"}><button className={bstyle}>▶︎ PLAY </button></Link>
     
         <button className={bstyle} style={ {backgroundColor: 'grey',color:'white'}}>ⓘMore Info</button>
       </div>

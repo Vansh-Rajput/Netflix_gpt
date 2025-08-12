@@ -14,4 +14,14 @@ const Loader = () => {
   )
 }
 
+export const Empty=()=>{
+  return(
+    <div>
+      <img alt='empty poster' src='https://cdni.iconscout.com/illustration/premium/thumb/product-is-empty-8044872-6430781.png'/>
+      <p className="text-3xl text-center text-white font-semibold">Your  Watchlist  Is  Empty</p>
+    </div>
+    
+  )
+}
+
 export default Loader

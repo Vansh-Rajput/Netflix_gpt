@@ -3,7 +3,7 @@ import openai from "../utils/openai";
 import Ai_search from "../utils/Ai_search";
 import { addsearchresult } from "../utils/Gptslice";
 import { useDispatch } from "react-redux";
-
+import Header from "./Header";
 
 
 const Gptsearchbar = ({load,setload}) => {
@@ -15,45 +15,50 @@ const Gptsearchbar = ({load,setload}) => {
  
     setload(1);
   
-
 const query = `
-You are a professional movie recommendation engine.
+You are a hyper-specialized movie recommendation AI. Your sole function is to process a user's query and return a comma-separated list of exactly 100 movie titles according to the rules below.
 
-The user will either:
-A. Ask for general movie recommendations (e.g., "comedy movies", "Korean thrillers"), OR
-B. Mention a specific movie (e.g., "John Wick", "Inception").
+# 1. Mode Determination
+First, analyze the user's query to determine if it refers to a specific movie title or a general genre/theme.
+- **Specific Movie Mode:** The query is a known movie title (e.g., "Inception", "The Dark Knight", "John Wick"). If a query could be both a genre and a specific movie (e.g., "Gladiator"), ALWAYS default to Specific Movie Mode.
+- **General Mode:** The query is a request for a genre, theme, or type of movie (e.g., "heist movies", "90s action comedies", "mind-bending thrillers").
+
+# 2. Execution Rules
+
+## A. If in Specific Movie Mode:
+1.  **Identify the Series:** Immediately identify the full cinematic series, franchise, or universe the movie belongs to. This includes all sequels, prequels, and direct spin-offs.
+2.  **Compile the Series List:** Create a list of ALL installments of that series. Order them chronologically by their original theatrical release date.
+3.  **Generate Similar Movies:** After the complete series list, find other movies that are highly similar in tone, style, premise, or genre.
+4.  **Filter & Refine:**
+    - The 'similar movies' list must NOT contain the original movie or any of the installments listed in step 2.
+    - All movies recommended (both series and similar) must have been released in 2005 or later.
+5.  **Assemble Final List:** Combine the 'Series List' and the 'Similar Movies List' to create a final list that contains EXACTLY 100 movie titles. The series titles MUST come first.
+
+## B. If in General Mode:
+1.  Generate a list of movies that perfectly match the requested genre or theme.
+2.  All movies must have been released in 2005 or later.
+3.  Ensure the list includes a mix of popular blockbusters and critically acclaimed but lesser-known films.
+4.  The final list must contain EXACTLY 100 movie titles.
+
+# 3. CRITICAL OUTPUT FORMAT
+- Your entire response MUST consist ONLY of the movie titles.
+- The output MUST be a single line of text.
+- Titles MUST be separated by a comma and a space (e.g., Movie A, Movie B, Movie C).
+- DO NOT include any introduction, explanation, headings (like "Here are your movies:"), apologies, or numbering.
+- The total number of titles in the list must be exactly 100.
 
 ---
-
-# Your job:
-
-- Step 1: Decide if the query is general or mentions a specific movie.
-- Step 2A: If it’s general, follow the genre/language/theme and return a list of 100 relevant movies.
-- Step 2B: If the query mentions a specific movie, do the following:
-
-   1. Analyze the movie: What is its genre, mood, pacing, director style, story elements?
-   2. Recommend 100 movies that are similar in **style, tone, theme, or cinematic experience**.
-   3. Do **NOT** include the original movie in the list.
-   4. Prioritize **recent and popular titles** first, then include highly relevant older ones.
-   5. Include both **mainstream and underrated** but fitting movies.
-
+## Example Task
+**User Query:** John Wick
+**Correct Output:** John Wick, John Wick: Chapter 2, John Wick: Chapter 3 – Parabellum, John Wick: Chapter 4, Nobody, Atomic Blonde, Extraction, The Equalizer, Sicario, The Man from U.N.C.L.E., Polar, Kate, The Accountant, The Gray Man, Salt, Hanna, The Bourne Ultimatum, Casino Royale, Taken, Anna, Bullet Train, ... [and so on, until 100 total titles are listed]
 ---
 
-# Output Format:
-- Return **exactly 100 movie titles**, comma-separated.
-- No numbering, no line breaks, no explanations.
-- do not suggest movies which are more than 20 years old.
----
-
-# User Query:
+## User Query:
 "${searchdata?.current?.value}"
-
-# Output (100 movie titles, comma-separated):
 `;
 
-
   const response = await openai.models.generateContent({
-    model: "gemini-2.0-flash",
+    model: "gemini-2.5-pro",
     contents: query,
   });
 
@@ -72,7 +77,7 @@ setload(null);
 
   return (
     <div>
-   
+   <Header/>
 <form className="md:w-[50%] mx-auto w-[80%] py-36" onSubmit={(e)=>e.preventDefault()}>   
   <div className="relative">
     

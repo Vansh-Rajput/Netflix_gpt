@@ -4,11 +4,12 @@ import { Usetrailer } from "../utils/usetrailer";
 
 
 const Watch = () => {
-    const {watchid}=useParams();
-   
+  const {type,watchid}=useParams();
+
+
     const [data,setdata]=useState(null);
        
-    Usetrailer(setdata,watchid);
+    Usetrailer(type,setdata,watchid);
     
     if(data!==null){
     const link= data?.results?.find((elem)=>elem?.type==='Trailer');

@@ -1,5 +1,5 @@
 
-# power of firebase
+# firebase
 
 - 😳😲 we didnt used any update func for signin (inside auth function), still it works fine for display name, because it remembers the data from signup part, it was stored in backend and was cached in browser storage,it means the user in param of auth func that we are receiving is the one we created during signup...hence we are just using them and dispatching to get the results back to our store....
 
@@ -32,3 +32,23 @@
 - by default mobile
 - sm for tablet
 - md for desktop
+
+
+# FireStore DB
+- doc is used to create reference to document...
+- getDoc(docRef) fetches the document snapshot from Firestore asynchronously.It returns data if the document exists.
+- setDoc() used to overides the previous doc and create a new one. If a document already exists, all existing fields will be replaced by the new data you provide.
+- updateDoc(docRef,data) Only updates the specified fields in the document — leaves other fields untouched.
+  generally used along with arrayUnion to add data by avoiding duplicates too...
+- arrayRemove(data) to delete element from array by providing data..
+
+
+# How Watchlist works?
+- VERY IMP to use onauthstatechanged as earlier we were trying to call our watchlist func before user was properly loggedin, hence return [] was executed everytime....so first login, then fetch watchlist...
+- also no need for onauthstatechanged in remove / add function calls because we are using them after user had succesfully logged in..
+
+- WORKING OF ADD/REMOVE...
+
+- addtowatchlist or removewatchlist returns a Promise, so your function handlewatchlist waits (await) until it’s done.
+- After that finishes, you call setiswatchlist(!iswatchlist). setiswatchlist changes React state, which always causes the component to re-render.
+- That re-render does not mean onAuthStateChanged got called — it’s just React doing its normal refresh cycle because state changed. Hence our Red heart is visible correctly..

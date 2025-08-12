@@ -7,7 +7,7 @@ const Videobackground = ({id}) => {
 
    const [data,setdata]=useState(null);
    
-Usetrailer(setdata,id);
+Usetrailer('movie',setdata,id);
 
 if(data!==null){
 const link= data?.results?.find((elem)=>elem?.type==='Clip');
