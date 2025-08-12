@@ -52,3 +52,9 @@
 - addtowatchlist or removewatchlist returns a Promise, so your function handlewatchlist waits (await) until it’s done.
 - After that finishes, you call setiswatchlist(!iswatchlist). setiswatchlist changes React state, which always causes the component to re-render.
 - That re-render does not mean onAuthStateChanged got called — it’s just React doing its normal refresh cycle because state changed. Hence our Red heart is visible correctly..
+
+
+
+# re-Deploying...
+- npm run build
+- firebase deploy
