@@ -16,7 +16,7 @@ const Gptsearchsugg = () => {
   select.map((val,ind)=>{
   const check = val?.results;
   return check[0]?.poster_path!==null &&  check?.length!==0?
-  <Moviecard poster={val?.results[0]?.poster_path} id={val?.results[0]?.id} key={ind}/>
+  <Moviecard poster={val?.results[0]?.poster_path} id={val?.results[0]?.id} fulldata={val?.results[0]} type={'movie'} key={ind}/>
   :null;
 
   })

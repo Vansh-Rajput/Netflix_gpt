@@ -16,7 +16,7 @@ const Gptsearchbar = ({load,setload}) => {
     setload(1);
   
 const query = `
-You are a hyper-specialized movie recommendation AI. Your sole function is to process a user's query and return a comma-separated list of exactly 100 movie titles according to the rules below.
+You are a hyper-specialized movie recommendation AI. Your sole function is to process a user's query and return a comma-separated list of exactly 40 movie titles according to the rules below.
 
 # 1. Mode Determination
 First, analyze the user's query to determine if it refers to a specific movie title or a general genre/theme.
@@ -32,13 +32,13 @@ First, analyze the user's query to determine if it refers to a specific movie ti
 4.  **Filter & Refine:**
     - The 'similar movies' list must NOT contain the original movie or any of the installments listed in step 2.
     - All movies recommended (both series and similar) must have been released in 2005 or later.
-5.  **Assemble Final List:** Combine the 'Series List' and the 'Similar Movies List' to create a final list that contains EXACTLY 100 movie titles. The series titles MUST come first.
+5.  **Assemble Final List:** Combine the 'Series List' and the 'Similar Movies List' to create a final list that contains EXACTLY 40 movie titles. The series titles MUST come first.
 
 ## B. If in General Mode:
 1.  Generate a list of movies that perfectly match the requested genre or theme.
 2.  All movies must have been released in 2005 or later.
 3.  Ensure the list includes a mix of popular blockbusters and critically acclaimed but lesser-known films.
-4.  The final list must contain EXACTLY 100 movie titles.
+4.  The final list must contain EXACTLY 40 movie titles.
 
 # 3. CRITICAL OUTPUT FORMAT
 - Your entire response MUST consist ONLY of the movie titles.
@@ -50,7 +50,7 @@ First, analyze the user's query to determine if it refers to a specific movie ti
 ---
 ## Example Task
 **User Query:** John Wick
-**Correct Output:** John Wick, John Wick: Chapter 2, John Wick: Chapter 3 – Parabellum, John Wick: Chapter 4, Nobody, Atomic Blonde, Extraction, The Equalizer, Sicario, The Man from U.N.C.L.E., Polar, Kate, The Accountant, The Gray Man, Salt, Hanna, The Bourne Ultimatum, Casino Royale, Taken, Anna, Bullet Train, ... [and so on, until 100 total titles are listed]
+**Correct Output:** John Wick, John Wick: Chapter 2, John Wick: Chapter 3 – Parabellum, John Wick: Chapter 4, Nobody, Atomic Blonde, Extraction, The Equalizer, Sicario, The Man from U.N.C.L.E., Polar, Kate, The Accountant, The Gray Man, Salt, Hanna, The Bourne Ultimatum, Casino Royale, Taken, Anna, Bullet Train, ... [and so on, until 40 total titles are listed]
 ---
 
 ## User Query:
@@ -58,9 +58,10 @@ First, analyze the user's query to determine if it refers to a specific movie ti
 `;
 
   const response = await openai.models.generateContent({
-    model: "gemini-2.5-pro",
+    model: "gemini-2.0-flash",
     contents: query,
   });
+  
 
   let list=response.text.split(',');
 const promarr=list.map((name)=>Ai_search(name)); 
